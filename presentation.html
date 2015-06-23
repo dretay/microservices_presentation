@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Microservices Overview</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic' rel='stylesheet' type='text/css'>
+    <style type="text/css" media="screen">
+
+      body {
+        font-family: 'Droid Serif';
+      }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: 400;
+        margin-bottom: 0;
+      }
+      .remark-slide-content h1 { font-size: 3em; }
+      .remark-slide-content h2 { font-size: 2em; }
+      .remark-slide-content h3 { font-size: 1.6em; }
+      .footnote {
+        position: absolute;
+        bottom: 3em;
+      }
+      li p { line-height: 1.25em; }
+      .red { color: #fa0000; }
+      .large { font-size: 2em; }
+      a, a > code {
+        color: rgb(249, 38, 114);
+        text-decoration: none;
+      }
+      code {
+        -moz-border-radius: 5px;
+        -web-border-radius: 5px;
+        background: #e7e8e2;
+        border-radius: 5px;
+        text-align: left;
+        position: relative;
+      }
+      code a.run { position: absolute; top: 10px; right: 10px; }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+
+      .remark-code-line-highlighted     { background-color: #373832; }
+      .pull-left {
+        float: left;
+        width: 47%;
+      }
+      .pull-right {
+        float: right;
+        width: 47%;
+      }
+      .pull-right ~ p {
+        clear: both;
+      }
+      #slideshow .slide .content code {
+        font-size: 0.8em;
+      }
+      #slideshow .slide .content pre code {
+        font-size: 0.9em;
+        padding: 15px;
+      }
+      .inverse {
+        background: #272822;
+        color: #777872;
+        text-shadow: 0 0 20px #333;
+      }
+      .inverse h1, .inverse h2, .inverse h3 {
+        color: #f3f3f3;
+        line-height: 0.8em;
+      }
+
+      /* Slide-specific styling */
+      #slide-inverse .footnote {
+        bottom: 12px;
+        left: 20px;
+      }
+      #slide-how .slides {
+        font-size: 0.9em;
+        position: absolute;
+        top:  151px;
+        right: 140px;
+      }
+      #slide-how .slides h3 {
+        margin-top: 0.2em;
+      }
+      #slide-how .slides .first, #slide-how .slides .second {
+        padding: 1px 20px;
+        height: 90px;
+        width: 120px;
+        -moz-box-shadow: 0 0 10px #777;
+        -webkit-box-shadow: 0 0 10px #777;
+        box-shadow: 0 0 10px #777;
+      }
+      #slide-how .slides .first {
+        background: #fff;
+        position: absolute;
+        top: 20%;
+        left: 20%;
+        z-index: 1;
+      }
+      #slide-how .slides .second {
+        position: relative;
+        background: #fff;
+        z-index: 0;
+      }
+
+      /* Two-column layout */
+      .left-column {
+        color: #777;
+        width: 20%;
+        height: 92%;
+        float: left;
+        text-align: left;
+      }
+        .left-column h2:last-of-type, .left-column h3:last-child {
+          color: #000;
+        }
+        .inverse .left-column h1, .inverse .left-column h2, .inverse .left-column h3 {
+          color: rgb(137, 137, 137);
+        }
+        .inverse .left-column h2:last-of-type, .inverse .left-column h3:last-child {
+          color: rgb(195, 195, 195);
+        }
+      .right-column {
+        width: 75%;
+        float: right;
+        padding-top: 1em;
+      }
+      .left-text {
+        text-align: left;
+      }
+      .right-text {
+        text-align: right;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+name: inverse
+layout: true
+class: center, middle, inverse
+---
+#Microservices
+## The bento box of architectures
+.footnote[Drew Tayman</br>andrew.tayman@fireeye.com]
+---
+## They're not just smaller versions of traditional services
+<img src="cashew.png" width="640px"/>
+
+---
+#"Where does my code run?"
+---
+## "That box on that desk"
+<img src="Sun_Blade_2000.jpg" width="640px"/>
+---
+## "That box on my network"
+<img src="client_server.png" width="640px"/>
+---
+## "That tier of the stack"
+<img src="tiered.png" width="540px"/>
+---
+## "That's a big stack"
+<img src="multitier.gif" width="640px"/>
+---
+# Where are we today?
+---
+# Service Oriented Architecture
+<img src="soaarchitecture.png" width="640px"/>
+---
+# Why is SOA so popular?
+## It maximizes utilization of shared resources in virtualized environments.
+---
+# The times they are a changin
+---
+<img src="automation.png" width="540px"/>
+---
+layout: false
+class: center, middle
+.left-column[
+  ## CD and CI
+
+]
+.right-column[
+# Continuous Delivery Pipeline
+<img src="chart-continuous-delivery.png" width="540px"/>
+## Small cycles of development that ensure software can be delivered at any time.
+
+]
+---
+layout: false
+class: center, middle
+.left-column[
+  ## CD and CI
+  ### - Puppet / Chef
+
+]
+.right-column[
+<img src="GitHubz_Cat.png" width="540px"/>
+## Allows you to repeatably provision boxes with standard configurations.
+]
+---
+layout: false
+class: center, middle
+.left-column[
+  ## CD and CI
+  ### - Puppet / Chef
+  ### - Docker
+
+]
+.right-column[
+# Docker
+<img src="docker-vm-container.png" width="540px"/>
+## Makes applications more like OS process than heavy virtual machines. Allows much higher application density on a server.
+]
+---
+layout: false
+class: center, middle
+
+.left-column[
+  ## CD and CI
+  ### - Puppet / Chef
+  ### - Docker
+  ### - Testing
+
+]
+.right-column[
+## When you have build server you can automate a lot of your testing.
+<img src="jenkins.jpg" width="440px"/>
+
+]
+---
+layout: false
+class: center, middle
+
+.left-column[
+  ## CD and CI
+  ### - Puppet / Chef
+  ### - Docker
+  ### - Testing
+  ### - Monitoring
+
+]
+.right-column[
+## Nagios, Logstash, Graphite, etc... can give you visibility into whether or not your application is running correctly / performantly.
+<img src="logstash.png" width="540px"/>
+]
+---
+template: inverse
+# Microservices are the first post-continuous delivery architecture
+---
+template: inverse
+#They are rooted in Amazon's attitude of "you build it, you run it"
+---
+template: inverse
+#You own a product from development though its production life cycle.
+---
+layout: false
+class: center, middle
+.left-column[
+  ## Microservices
+  ### - Monoliths
+
+]
+.right-column[
+## They are small containers that contain exactly what they need to run.
+<img src="microservices_container.png" width="540px"/>
+~1000 LOC-ish per service
+]
+---
+layout: false
+class: center, middle
+.left-column[
+  ## Microservices
+  ### - Monoliths
+  ### - Coupling
+
+]
+.right-column[
+## They force you to be explicit about coupling.
+<img src="tightcoupling.gif" width="440px"/>
+
+]
+---
+layout: false
+class: center, middle
+.left-column[
+  ## Microservices
+  ### - Monoliths
+  ### - Coupling
+  ### - Orchestration
+
+]
+.right-column[
+## They prefer "choreography to orchestration"
+<img src="esb_architects.png" width="440px"/>
+
+]
+---
+layout: false
+class: center, middle
+.left-column[
+  ## Microservices
+  ### - Monoliths
+  ### - Coupling
+  ### - Orchestration
+
+]
+.right-column[
+<img src="esb_architects_2.jpg" width="540px"/>
+
+]
+---
+layout: false
+class: left, middle
+.left-column[
+  ## Microservices
+  ### - Monoliths
+  ### - Coupling
+  ### - Orchestration
+  ### - Decentralized
+
+]
+.right-column[
+#ACID vs BASE
+- `ACID` (Atomicity, Consistency, Isolation, Durability)
+ - guarantees transactions are processed reliably.
+- `BASE` (Basically Available, Soft state, Eventual consistency)
+ - gives up on consistency in favor of performance / scalability.
+
+[The CAP Theorem](http://webpages.cs.luc.edu/~pld/353/gilbert_lynch_brewer_proof.pdf) states that as your system becomes more distributed it will prefer BASE to acid.
+
+Due to the decentralized nature of microservices transactions are very difficult and will always favor eventual consistency.
+]
+---
+layout: false
+class: center, middle
+.left-column[
+  ## Microservices
+  ### - Monoliths
+  ### - Coupling
+  ### - Orchestration
+  ### - Decentralized
+
+]
+.right-column[
+###Consistency, Availability, Partition Tolerance
+<img src="cap.svg" width="640px"/>
+]
+---
+layout: false
+class: left, middle
+.left-column[
+  ## Microservices
+  ### - Monoliths
+  ### - Coupling
+  ### - Orchestration
+  ### - Decentralized
+  ### - Testing
+
+]
+.right-column[
+#Testing
+- You can and should write unit tests to guarantee the functionality of your code.
+- Usually these are not enough because you are part of a larger system.
+- Something like [PACT](https://github.com/realestate-com-au/pact), [PACTO](https://github.com/thoughtworks/pacto), or JANUS(https://github.com/gga/janus) to document interface contracts between components.
+]
+---
+layout: false
+class: center, middle
+.left-column[
+  ## Microservices
+  ### - Monoliths
+  ### - Coupling
+  ### - Orchestration
+  ### - Decentralized
+  ### - Testing
+
+]
+.right-column[
+#JANUS
+<img src="janus.png" width="640px"/>
+]
+---
+layout: false
+class: left, middle
+.left-column[
+  ## Microservices
+  ### - Monoliths
+  ### - Coupling
+  ### - Orchestration
+  ### - Decentralized
+  ### - Testing
+  ### - Flags
+
+]
+.right-column[
+#Feature Flags
+- Feature flags can play a prominent role in A/B testing and operational rampups.
+- Etsy has a [Feature API](https://github.com/etsy/feature) and is a major proponent of the technology.
+- Allow you to roll out a feature to a limited number of users, monitor logs, and increase / decrease % of users over time in production.
+]
+---
+class: center,middle,inverse
+#What does all this get you?
+---
+class: center,middle,inverse
+#NETFLIX
+<img src="netflix_topology.png" width="700px"/>
+---
+class: left,middle,inverse
+#Benefits
+## Asynchronicity
+- You do things like ask the same question of multiple services and take the first response.
+
+## Deployment time
+- You can / should have code in production within a few days vs a few weeks / months with more traditional monolith applications.
+
+## Reporting
+- You can get much more fine grained reporting concerning usage / load of services within your architecture.
+
+## CQRS (Command Query Responsibility Segregation)
+- You can use a different model to update information than to read information.
+---
+class: center,middle,inverse
+#Risks of Microservices
+---
+class: center,middle,inverse
+<img src="devops_borat.png" width="640px"/>
+---
+class: center,middle,inverse
+# Microservices are a specific architecture to solve a specific problem
+#### risk of being out-innovated outweighs all else.
+---
+layout: false
+class: left, middle
+.left-column[
+  ## Risks
+  ### - Monitoring
+
+]
+.right-column[
+## You have to get `MUCH` better at monitoring.
+- When you have thousands of independent services you need specific tooling around automatically handing common fault modes.
+- Its unrealistic to debug with a bunch of shells open
+- You will need to capture metrics and logs, then aggregate them up into "synthetic transactions"
+- You will need to be able use something like a transaction id to track activity across services.
+]
+---
+layout: false
+class: left, middle
+.left-column[
+  ## Risks
+  ### - Monitoring
+  ### - Consistency
+
+]
+.right-column[
+## You need a consistent platform on which to build services
+- Projects like [Dropwizard](http://www.dropwizard.io/) that allow you to define a service template that you inject code into.
+<img src="dropwizard.png" width="140px" style="position: relative; left: 25%"/>
+]
+---
+layout: false
+class: left, middle
+.left-column[
+  ## Risks
+  ### - Monitoring
+  ### - Consistency
+  ### - Inf. Maturity
+
+]
+.right-column[
+## Your infrastructure (both hardware and software) needs to be fault tolerant
+- You good governance around things like timeouts to prevent zombies in your datacenter.
+- You should also implement external "circuit breakers" so that services can know, before execution, if their downstream dependencies are available or not.
+ - This will prevent avoid cascading failures.
+- Developers need to maintain / honor contracts they publish so that consumers can reliably use their services.
+]
+---
+layout: false
+class: left, middle
+.left-column[
+  ## Risks
+  ### - Monitoring
+  ### - Consistency
+  ### - Inf. Maturity
+  ### - Testing
+
+]
+.right-column[
+## You need a mature test environment that can reliably determine if code changes will create issues in production.
+- Most testing needs to be automated. This includes both intra-process and inter-process testing.
+- Must test all the things - performance, service exclusions, datacenter outages, etc...
+- Human QA should be involved only for spot-checking and "X-Factor" tests. Things that would be hard for a computer to know or interactions that might be unexpected.
+]
+---
+layout: false
+class: center, middle
+.left-column[
+  ## Risks
+  ### - Monitoring
+  ### - Consistency
+  ### - Inf. Maturity
+  ### - Testing
+  ### - NOTE
+
+]
+.right-column[
+# You can mix-and-match microservices with a traditional SOA
+]
+---
+class: center, middle
+# Further Reading
+### [Continuous Delivery](http://www.amazon.com/Continuous-Delivery-Deployment-Automation-Addison-Wesley/dp/0321601912)
+### [Building Microservices](http://shop.oreilly.com/product/0636920033158.do)
+### [Software Architecture Fundamentals](http://shop.oreilly.com/product/110000195.do)
+
+
+    </textarea>
+    <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js" type="text/javascript"></script>
+    <script src="http://coffeescript.org/extras/coffee-script.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      var compileAndEval = function(el) {
+        var source = prepare(el)
+          , compiledJS = ''
+          ;
+
+          try {
+            compiledJS = CoffeeScript.compile(source, { bare: true });
+            evalJS(compiledJS);
+          } catch (error) {
+            alert(error);
+          }
+      };
+
+      var prepare = function(el) {
+        var element = $(el)
+          , text
+          ;
+
+        element.children(".run").remove();
+        text = []
+        element.children().each(function(index,element){text.push($(element).text())});
+        text=text.join("\n")
+        addRunButton(el, false);
+
+        return text;
+      };
+
+      var evalJS = function(code) {
+        try {
+          eval(code);
+        } catch(error) {
+          alert(error);
+        }
+      };
+
+      var addRunButton = function(parent, bindEvent) {
+        if ($(parent).children('.run').length > 0) {
+          return;
+        }
+
+        var el = $(parent).append('<a class="run coffeescript">Run code</a>');
+
+        if (typeof bindEvent == "undefined" || bindEvent) {
+          $(el).click(function(e) {
+            e.preventDefault();
+            compileAndEval(el);
+          });
+        }
+      };
+
+      window.loadConsolesOn = function(selector) {
+        $(selector).each(function(index, element) {
+          addRunButton(element);
+        });
+      };
+    </script>
+    <script>
+      var slideshow = remark.create({highlightStyle: 'tomorrow-night'});
+      $(document).ready(function() {
+        slideshow.on("showSlide",  function (slide) {
+          loadConsolesOn(".coffeescript:contains('alert')");
+        });
+        loadConsolesOn(".coffeescript:contains('alert')");
+
+      });
+    </script>
+
+  </body>
+</html>
